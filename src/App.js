@@ -1,7 +1,14 @@
-import "./app.css";
+import "./App.css";
+import { Home } from "./Home";
+import { Navbar } from "./Navbar";
 
 function App() {
-  return <div>DIV</div>;
+  return (
+    <>
+      <Navbar />
+      <Home />
+    </>
+  );
 }
 
 export default App;
