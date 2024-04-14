@@ -10,12 +10,16 @@
 
 :root {
   font-size: 62.5%;
+  --card-per-screen: 6;
   --white: #fff;
   --black: #000;
+  --grey: #808080;
+  --primary-text-color: #e5e5e5;
 }
 
 body {
-  background-color: black;
+  background-color: #141414;
+  overflow-x: hidden;
 }
 
 a {
@@ -34,30 +38,36 @@ li {
 
 h1,
 h2 {
-  color: var(--white);
+  color: var(--primary-text-color);
 }
 
 #logo {
   margin-right: 25px;
   display: flex;
   align-self: center;
+  height: 5rem;
 }
 
 header {
   background-image: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.115),
-    rgba(0, 0, 0, 0.5),
-    rgb(0, 0, 0, 1)
+    180deg,
+    rgba(0, 0, 0, 0.7) 10%,
+    transparent
   );
-  color: var(--white);
-  height: 68px;
+  color: var(--primary-text-color);
+  height: 6.8rem;
   width: 100%;
   padding: 0 4%;
   display: grid;
   grid-template-columns: auto 1fr;
+  /* display: flex; */
   align-items: center;
-  position: absolute;
+  position: fixed;
+  z-index: 1000;
+}
+
+header.scrolled {
+  background-color: rgb(20, 20, 20);
 }
 
 nav {
@@ -66,6 +76,8 @@ nav {
   grid-template-columns: 1fr auto;
   font-size: 1.4rem;
   font-weight: 500;
+  align-items: center;
+  /* line-height: 1; */
 }
 
 .navlink-1 {
@@ -83,34 +95,60 @@ nav {
   gap: 18px;
 }
 
-img {
+/* .netflix-logo {
   height: 5rem;
-}
+} */
 
 .carousel {
-  background-color: grey;
+  background-color: black;
   height: 900px;
 }
 
-.card {
-  width: 227px;
-  height: 127px;
-  background-color: brown;
-  padding: 0 3px;
-  border-radius: 5px;
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.slider-container {
-  padding: 0 4%;
-  margin-block: 45px;
+.row-container {
+  /* padding: 0 4%; */
+  margin-block: 46px;
 }
 
-.slider-container h1,
+.row-title {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar-container {
+  display: flex;
+  gap: 1.5px;
+  color: white;
+  margin-left: auto;
+  margin-right: 60px;
+  opacity: 0;
+}
+
+.progress-bar {
+  background-color: grey;
+  width: 1rem;
+  height: 0.25rem;
+}
+
+.row-container:hover .progress-bar-container {
+  opacity: 1;
+}
+
+.row-container h1,
 h2 {
   display: inline;
 }
 
-.slider-container h2 {
+.row-container h1 {
+  padding-left: 4%;
+}
+
+.row-container h2 {
   font-size: 1.2rem;
   font-weight: 600;
   color: aqua;
@@ -118,11 +156,142 @@ h2 {
   opacity: 0;
 }
 
-.slider-container h2:hover {
+.row-container h2:hover {
   margin-left: 10px;
   opacity: 1;
 }
+
+.slider-container {
+  position: relative;
+  padding: 0 4%;
+}
 .slider {
   display: flex;
-  gap: 6px;
+  /* height: 127px; */
+  transform: translateX(00%);
+  transition: all 0.5s ease-in-out;
+}
+
+.card {
+  display: inline-block;
+  /* max-width: 16.6666666667%; */
+  flex: 0 0 calc(100% / var(--card-per-screen));
+  height: 100%;
+  padding: 0 3px;
+  border-radius: 5px;
+}
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2%;
+}
+
+.btn {
+  position: absolute;
+  width: 58px;
+  height: 100%;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.273);
+  z-index: 3;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s ease 0s;
+  opacity: 0;
+}
+
+.btn img {
+  width: 30%;
+  height: 25%;
+  transition: all 0.3s ease 0s;
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.467);
+}
+.btn:hover > img {
+  width: 35%;
+  height: 30%;
+}
+
+.btn-left {
+  left: 0;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.btn-right {
+  right: 0;
+  top: 0;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.slider-container:hover > .btn {
+  opacity: 1;
+}
+
+/* footer */
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  margin-inline: 200px;
+}
+
+.desc-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.desc {
+  color: var(--grey);
+  flex: 0 0 25%;
+  margin-bottom: 16px;
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 1300px) {
+  :root {
+    --card-per-screen: 5;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  nav {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  :root {
+    --card-per-screen: 4;
+  }
+
+  header {
+    height: 4.1rem;
+  }
+
+  #logo {
+    height: 4.1rem;
+    display: flex;
+    align-items: center;
+  }
+  .netflix-logo {
+    height: 3.1rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  :root {
+    --card-per-screen: 3;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --card-per-screen: 2;
+  }
 }
