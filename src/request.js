@@ -11,4 +11,8 @@ export const requests = {
   fetchHorrorMovies: `${HEADER}/discover/movie?api_key=${API_KEY}&with_genres=27`,
   fetchRomanceMovies: `${HEADER}/discover/movie?api_key=${API_KEY}&with_genres=10749`,
   fetchDocumantaries: `${HEADER}/discover/movie?api_key=${API_KEY}&with_genres=99`,
+  fetchTrendingTV: `${HEADER}/trending/tv/week?api_key=${API_KEY}&language=en-US`,
+  fetchPopularTV: `${HEADER}/tv/popular?api_key=${API_KEY}&language=en-US&page=1`,
 };
+
+// https://api.themoviedb.org/3/trending/tv/week?api_key=965ed2df9cdb34f53c98192ed5443852&language=en-US%27
