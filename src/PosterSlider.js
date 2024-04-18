@@ -4,28 +4,27 @@ import { requests, IMAGE_URL, HEADER } from "./request";
 import rightArrow from "./Images/right-arrow.png";
 import leftArrow from "./Images/left-arrow.png";
 import defautlBackdrop from "./Images/Backdrop.jpg";
+import { svgNumber, svgSize } from "./dataSVG";
 
-export const Slider = ({ url, rowTitle }) => {
+export const PosterSlider = ({ url, rowTitle }) => {
   const [loader, setLoader] = useState(true);
   const [movies, setMovies] = useState([]);
   const [numberOfCard, setNumberOfCard] = useState(0);
   const [progress, setProgress] = useState(0);
   const [transform, setTransform] = useState(0);
+
   // const url = requests.fetchTrending;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        const response2 = await axios.get(url + "&page=2");
+        // const response2 = await axios.get(url + "&page=2");
         // const response3 = await axios.get(url + "&page=3");
 
-        const combinedResponse = [
-          ...response.data.results,
-          ...response2.data.results,
-        ];
+        const combinedResponse = [...response.data.results];
 
-        combinedResponse.splice(30);
+        combinedResponse.splice(10);
 
         setMovies(combinedResponse);
         setLoader(false);
@@ -94,7 +93,6 @@ export const Slider = ({ url, rowTitle }) => {
           <h1>
             <a>{rowTitle}</a>
           </h1>
-          <h2>Explore All</h2>
           <div className='progress-bar-container'>
             {!loader ? (
               Array.from({ length: progress }, (_, index) => (
@@ -122,30 +120,60 @@ export const Slider = ({ url, rowTitle }) => {
             {loader ? (
               <div>LOADING</div>
             ) : (
-              movies.map((movie) =>
-                movie.backdrop_path ? (
+              movies.map((movie, index) =>
+                movie.poster_path ? (
                   <div
-                    className='backdrop-card'
-                    key={movie.id}
+                    className='poster-card'
+                    key={index}
                     name={movie.original_title}
                   >
-                    <img
-                      className='backdrop-card-img'
-                      src={`${IMAGE_URL}${movie.backdrop_path}`}
-                      alt=''
-                    />
+                    <section>
+                      <svg
+                        id='rank-1'
+                        width='100%'
+                        height='100%'
+                        viewBox={svgSize[index]}
+                      >
+                        <path
+                          stroke='#595959'
+                          strokeLinejoin='square'
+                          strokeWidth='4'
+                          d={svgNumber[index]}
+                        ></path>
+                      </svg>
+                      <img
+                        className='poster-card-img'
+                        src={`${IMAGE_URL}${movie.poster_path}`}
+                        alt=''
+                      />
+                    </section>
                   </div>
                 ) : (
                   <div
-                    className='backdrop-card'
-                    key={movie.id}
+                    className='poster-card'
+                    key={index}
                     name={movie.original_title}
                   >
-                    <img
-                      className='backdrop-card-img'
-                      src={defautlBackdrop}
-                      alt=''
-                    />
+                    <section>
+                      <svg
+                        id='rank-1'
+                        width='100%'
+                        height='100%'
+                        viewBox={svgSize[index]}
+                      >
+                        <path
+                          stroke='#595959'
+                          strokeLinejoin='square'
+                          strokeWidth='4'
+                          d={svgNumber[index]}
+                        ></path>
+                      </svg>
+                      <img
+                        className='poster-card-img'
+                        src={defautlBackdrop}
+                        alt=''
+                      />
+                    </section>
                   </div>
                 )
               )
@@ -164,6 +192,3 @@ export const Slider = ({ url, rowTitle }) => {
     </>
   );
 };
-{
-  /*  */
-}
