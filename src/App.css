@@ -362,12 +362,88 @@ h2 {
   opacity: 1;
 }
 
+.btn-footer {
+  font-size: 1.3rem;
+  letter-spacing: -0.5px;
+  color: var(--grey);
+  padding: 0.5em;
+  border: solid #808080 1px;
+  background-color: transparent;
+  line-height: 18px;
+  margin-bottom: 20px;
+}
+
+.btn-footer:hover {
+  color: var(--white);
+}
+
+/* buttons */
+
+/* loader */
+
+.loader-container {
+  padding: 0 4%;
+}
+
+.loader {
+  width: 100%;
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.loader div {
+  flex: 0 0 calc(100% / var(--card-per-screen));
+  height: 127px;
+  padding: 0 4px;
+  /* background-color: green; */
+  border-right: solid var(--backdrop) 2px;
+  border-left: solid var(--backdrop) 2px;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    100deg,
+    rgba(27, 27, 29, 1) 0%,
+    rgba(27, 27, 29, 1) 20%,
+    rgb(35, 35, 35, 1) 35%,
+    rgba(35, 35, 35, 1) 65%,
+    rgba(27, 27, 29, 1) 80%,
+    rgba(27, 27, 29, 1) 100%
+  );
+  background-size: 800%;
+  animation: bg-animation 2s infinite reverse;
+}
+
+.loader div:nth-child(2) {
+  animation-delay: 0.25s;
+}
+.loader div:nth-child(3) {
+  animation-delay: 0.5s;
+}
+.loader div:nth-child(4) {
+  animation-delay: 0.75s;
+}
+.loader div:nth-child(5) {
+  animation-delay: 1s;
+}
+.loader div:nth-child(6) {
+  animation-delay: 1.25s;
+}
+
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+/* loader */
+
 /* footer */
 
 .footer-container {
-  display: flex;
-  justify-content: center;
   margin-inline: 200px;
+  padding: 0 5%;
+  margin-top: 80px;
 }
 
 .desc-container {
@@ -378,10 +454,29 @@ h2 {
 }
 
 .desc {
+  font-size: 1.3rem;
   color: var(--grey);
   flex: 0 0 25%;
-  margin-bottom: 16px;
-  font-size: 1.3rem;
+  margin-bottom: 1.05%;
+}
+
+.social-links {
+  color: var(--white);
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.social-links section {
+  width: 100%;
+}
+
+.social-links svg {
+  margin-right: 30px;
+}
+
+.footer-container .copyright {
+  color: var(--grey);
+  margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1300px) {
@@ -420,6 +515,9 @@ h2 {
 @media screen and (max-width: 800px) {
   :root {
     --card-per-screen: 3;
+  }
+  .navlink-1 {
+    opacity: 0;
   }
 }
 

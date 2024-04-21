@@ -4,6 +4,7 @@ import { requests, IMAGE_URL, HEADER } from "./request";
 import rightArrow from "./Images/right-arrow.png";
 import leftArrow from "./Images/left-arrow.png";
 import defautlBackdrop from "./Images/Backdrop.jpg";
+import { SliderLoader } from "./SliderLoader";
 
 export const Slider = ({ url, rowTitle }) => {
   const [loader, setLoader] = useState(true);
@@ -89,7 +90,79 @@ export const Slider = ({ url, rowTitle }) => {
 
   return (
     <>
-      <div className='row-container'>
+      {loader ? (
+        <SliderLoader />
+      ) : (
+        <div className='row-container'>
+          <div className='row-title'>
+            <h1>
+              <a>{rowTitle}</a>
+            </h1>
+            <h2>Explore All</h2>
+            <div className='progress-bar-container'>
+              {!loader ? (
+                Array.from({ length: progress }, (_, index) => (
+                  <div key={index} className='progress-bar'></div>
+                ))
+              ) : (
+                <div>LOADING</div>
+              )}
+            </div>
+          </div>
+
+          <div className='slider-container'>
+            <button
+              className='btn btn-slider btn-left'
+              onClick={() => onLeftClick()}
+            >
+              <div className='btn btn-slider-img-container'>
+                <img src={leftArrow} alt='' />
+              </div>
+            </button>
+            <div
+              className={`slider`}
+              style={{ transform: `translateX(${transform}%)` }}
+            >
+              {movies.map((movie) =>
+                movie.backdrop_path ? (
+                  <div
+                    className='backdrop-card'
+                    key={movie.id}
+                    name={movie.original_title}
+                  >
+                    <img
+                      className='backdrop-card-img'
+                      src={`${IMAGE_URL}${movie.backdrop_path}`}
+                      alt=''
+                    />
+                  </div>
+                ) : (
+                  <div
+                    className='backdrop-card'
+                    key={movie.id}
+                    name={movie.original_title}
+                  >
+                    <img
+                      className='backdrop-card-img'
+                      src={defautlBackdrop}
+                      alt=''
+                    />
+                  </div>
+                )
+              )}
+            </div>
+            <button
+              className='btn btn-slider btn-right'
+              onClick={() => onRightClick()}
+            >
+              <div className='btn btn-slider-img-container'>
+                <img src={rightArrow} alt='' />
+              </div>
+            </button>
+          </div>
+        </div>
+      )}
+      {/* <div className='row-container'>
         <div className='row-title'>
           <h1>
             <a>{rowTitle}</a>
@@ -120,7 +193,7 @@ export const Slider = ({ url, rowTitle }) => {
             style={{ transform: `translateX(${transform}%)` }}
           >
             {loader ? (
-              <div>LOADING</div>
+              <SliderLoader />
             ) : (
               movies.map((movie) =>
                 movie.backdrop_path ? (
@@ -160,7 +233,7 @@ export const Slider = ({ url, rowTitle }) => {
             </div>
           </button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

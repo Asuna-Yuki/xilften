@@ -5,6 +5,7 @@ import rightArrow from "./Images/right-arrow.png";
 import leftArrow from "./Images/left-arrow.png";
 import defautlBackdrop from "./Images/Backdrop.jpg";
 import { svgNumber, svgSize } from "./dataSVG";
+import { SliderLoader } from "./SliderLoader";
 
 export const PosterSlider = ({ url, rowTitle }) => {
   const [loader, setLoader] = useState(true);
@@ -88,7 +89,108 @@ export const PosterSlider = ({ url, rowTitle }) => {
 
   return (
     <>
-      <div className='row-container'>
+      {loader ? (
+        <SliderLoader />
+      ) : (
+        <div className='row-container'>
+          <div className='row-title'>
+            <h1>
+              <a>{rowTitle}</a>
+            </h1>
+            <div className='progress-bar-container'>
+              {!loader ? (
+                Array.from({ length: progress }, (_, index) => (
+                  <div key={index} className='progress-bar'></div>
+                ))
+              ) : (
+                <div>LOADING</div>
+              )}
+            </div>
+          </div>
+
+          <div className='slider-container'>
+            <button
+              className='btn btn-slider btn-left'
+              onClick={() => onLeftClick()}
+            >
+              <div className='btn btn-slider-img-container'>
+                <img src={leftArrow} alt='' />
+              </div>
+            </button>
+            <div
+              className={`slider`}
+              style={{ transform: `translateX(${transform}%)` }}
+            >
+              {movies.map((movie, index) =>
+                movie.poster_path ? (
+                  <div
+                    className='poster-card'
+                    key={index}
+                    name={movie.original_title}
+                  >
+                    <section>
+                      <svg
+                        id='rank-1'
+                        width='100%'
+                        height='100%'
+                        viewBox={svgSize[index]}
+                      >
+                        <path
+                          stroke='#595959'
+                          strokeLinejoin='square'
+                          strokeWidth='4'
+                          d={svgNumber[index]}
+                        ></path>
+                      </svg>
+                      <img
+                        className='poster-card-img'
+                        src={`${IMAGE_URL}${movie.poster_path}`}
+                        alt=''
+                      />
+                    </section>
+                  </div>
+                ) : (
+                  <div
+                    className='poster-card'
+                    key={index}
+                    name={movie.original_title}
+                  >
+                    <section>
+                      <svg
+                        id='rank-1'
+                        width='100%'
+                        height='100%'
+                        viewBox={svgSize[index]}
+                      >
+                        <path
+                          stroke='#595959'
+                          strokeLinejoin='square'
+                          strokeWidth='4'
+                          d={svgNumber[index]}
+                        ></path>
+                      </svg>
+                      <img
+                        className='poster-card-img'
+                        src={defautlBackdrop}
+                        alt=''
+                      />
+                    </section>
+                  </div>
+                )
+              )}
+            </div>
+            <button
+              className='btn btn-slider btn-right'
+              onClick={() => onRightClick()}
+            >
+              <div className='btn btn-slider-img-container'>
+                <img src={rightArrow} alt='' />
+              </div>
+            </button>
+          </div>
+        </div>
+      )}
+      {/* <div className='row-container'>
         <div className='row-title'>
           <h1>
             <a>{rowTitle}</a>
@@ -188,7 +290,7 @@ export const PosterSlider = ({ url, rowTitle }) => {
             </div>
           </button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

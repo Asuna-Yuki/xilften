@@ -4,6 +4,7 @@ import { requests, IMAGE_URL, HEADER } from "./request";
 import axios from "axios";
 import { PosterSlider } from "./PosterSlider";
 import { svgInfo, svgPlay } from "./dataSVG";
+import { SliderLoader } from "./SliderLoader";
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -96,15 +97,15 @@ export const Home = () => {
         rowTitle={"Netflix Orignals"}
         url={requests.fetchNetflixOriginals}
       />
-      <PosterSlider
-        rowTitle={"Netflix Orignals"}
-        url={requests.fetchNetflixOriginals}
-      />
-      {/* <Slider rowTitle={"Top Rated"} url={requests.fetchTopRated} />
+
+      <Slider rowTitle={"Top Rated"} url={requests.fetchTopRated} />
       <Slider rowTitle={"Action Movies"} url={requests.fetchActionMovies} />
       <Slider rowTitle={"Comedy Movies"} url={requests.fetchComedyMovies} />
+      <PosterSlider rowTitle={"Top Rated"} url={requests.fetchTopRated} />
       <Slider rowTitle={"Horror Movies"} url={requests.fetchHorrorMovies} />
-      <Slider rowTitle={"Documantaries"} url={requests.fetchDocumantaries} /> */}
+      <Slider rowTitle={"Documantaries"} url={requests.fetchDocumantaries} />
+
+      {/* <SliderLoader /> */}
     </>
   );
 };

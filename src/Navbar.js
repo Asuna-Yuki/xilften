@@ -5,6 +5,7 @@ import Miku from "./Images/wp4842721.jpg";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,32 +21,57 @@ export const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [scrolled]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      const root = document.documentElement;
+
+      if (screenWidth <= 800) {
+        setScreenWidth(true);
+      } else {
+        setScreenWidth(false);
+      }
+    };
+
+    // Add event listener for resize event
+    window.addEventListener("resize", handleResize);
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const navLinks_1 = (
+    <ul className='navlink-1'>
+      <li>
+        <a>Home</a>
+      </li>
+      <li>
+        <a>TV Shows</a>
+      </li>
+      <li>
+        <a>Movies</a>
+      </li>
+      <li>
+        <a>New & Popular</a>
+      </li>
+      <li>
+        <a>My List</a>
+      </li>
+      <li>
+        <a>Browse by Language</a>
+      </li>
+    </ul>
+  );
   return (
     <header className={`${scrolled ? "scrolled" : ""}`}>
       <a id='logo' to='/'>
         <img className='netflix-logo' src={logo} alt='' />
       </a>
       <nav>
-        <ul className='navlink-1'>
-          <li>
-            <a>Home</a>
-          </li>
-          <li>
-            <a>TV Shows</a>
-          </li>
-          <li>
-            <a>Movies</a>
-          </li>
-          <li>
-            <a>New & Popular</a>
-          </li>
-          <li>
-            <a>My List</a>
-          </li>
-          <li>
-            <a>Browse by Language</a>
-          </li>
-        </ul>
+        {screenWidth === false ? navLinks_1 : <></>}
         <ul className='navlink-2'>
           <li>
             <a>
