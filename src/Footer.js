@@ -22,18 +22,42 @@ export const Footer = () => {
           </section>
         </div>
         <div className='desc-container'>
-          <div className='desc'>Audio Description</div>
-          <div className='desc'>Help Centre</div>
-          <div className='desc'>Gift Cards</div>
-          <div className='desc'>Media Centre</div>
-          <div className='desc'>Investor Relations</div>
-          <div className='desc'>Jobs</div>
-          <div className='desc'>Terms of Use</div>
-          <div className='desc'>Privacy</div>
-          <div className='desc'>Legal Notices</div>
-          <div className='desc'>Cookie Preferences</div>
-          <div className='desc'>Corporate Infomation</div>
-          <div className='desc'>Contact Us</div>
+          <div className='desc'>
+            <a>Audio Description</a>
+          </div>
+          <div className='desc'>
+            <a>Help Centre</a>
+          </div>
+          <div className='desc'>
+            <a>Gift Cards</a>
+          </div>
+          <div className='desc'>
+            <a>Media Centre</a>
+          </div>
+          <div className='desc'>
+            <a>Investor Relations</a>
+          </div>
+          <div className='desc'>
+            <a>Jobs</a>
+          </div>
+          <div className='desc'>
+            <a>Terms of Use</a>
+          </div>
+          <div className='desc'>
+            <a>Privacy</a>
+          </div>
+          <div className='desc'>
+            <a>Legal Notices</a>
+          </div>
+          <div className='desc'>
+            <a>Cookie Preferences</a>
+          </div>
+          <div className='desc'>
+            <a>Corporate Infomation</a>
+          </div>
+          <div className='desc'>
+            <a>Contact Us</a>
+          </div>
         </div>
         <div>
           <button className='btn btn-footer'>Service Code</button>

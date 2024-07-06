@@ -5,6 +5,7 @@ import axios from "axios";
 import { PosterSlider } from "./PosterSlider";
 import { svgInfo, svgPlay } from "./dataSVG";
 import { SliderLoader } from "./SliderLoader";
+import { SliderInline } from "./SliderInline";
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -37,44 +38,52 @@ export const Home = () => {
           <div>LOADING</div>
         ) : (
           <>
-            <div className='carousel-info'>
-              <div className='carousel-desc'></div>
-              <div className='carousel-links'>
-                <button className='btn btn-carousel'>
-                  <svg
-                    width='24'
-                    height='24'
-                    viewBox='0 0 24 24'
-                    fill='none'
-                    xmlns='http://www.w3.org/2000/svg'
-                    data-name='Play'
-                    aria-labelledby=':r5c:'
-                    aria-hidden='true'
-                  >
-                    <path d={svgPlay} fill='currentColor'></path>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className='btn btn-carousel'>
-                  <svg
-                    width='24'
-                    height='24'
-                    viewBox='0 0 24 24'
-                    fill='none'
-                    xmlns='http://www.w3.org/2000/svg'
-                    data-name='CircleI'
-                    aria-labelledby=':r5d:'
-                    aria-hidden='true'
-                  >
-                    <path
-                      fillRule='evenodd'
-                      clipRule='evenodd'
-                      d={svgInfo}
-                      fill='currentColor'
-                    ></path>
-                  </svg>
-                  <span>More Info</span>
-                </button>
+            <div className='carousel-items'>
+              <div className='carousel-info'>
+                <div className='carousel-desc'></div>
+                <div className='carousel-links'>
+                  <button className='btn btn-carousel'>
+                    <svg
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                      data-name='Play'
+                      aria-labelledby=':r5c:'
+                      aria-hidden='true'
+                    >
+                      <path d={svgPlay} fill='currentColor'></path>
+                    </svg>
+                    <span>Play</span>
+                  </button>
+                  <button className='btn btn-carousel'>
+                    <svg
+                      width='24'
+                      height='24'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                      xmlns='http://www.w3.org/2000/svg'
+                      data-name='CircleI'
+                      aria-labelledby=':r5d:'
+                      aria-hidden='true'
+                    >
+                      <path
+                        fillRule='evenodd'
+                        clipRule='evenodd'
+                        d={svgInfo}
+                        fill='currentColor'
+                      ></path>
+                    </svg>
+                    <span>More Info</span>
+                  </button>
+                </div>
+              </div>
+              <div className='carousel-slider'>
+                <SliderInline
+                  rowTitle={"Top Rated"}
+                  url={requests.fetchTopRated}
+                />
               </div>
             </div>
             <img
@@ -82,28 +91,28 @@ export const Home = () => {
               src={`${IMAGE_URL}${movies[getRandomNumber()].backdrop_path}`}
               alt=''
             />
-            <div className='carousel-slider'>
-              <PosterSlider
-                rowTitle={"Top Rated"}
-                url={requests.fetchTopRated}
-              />
-            </div>
           </>
         )}
       </section>
-      <Slider rowTitle={"Trending Now"} url={requests.fetchTrending} />
-      {/* <Slider rowTitle={"TV Shows"} url={requests.fetchPopularTV} /> */}
-      <Slider
-        rowTitle={"Netflix Orignals"}
-        url={requests.fetchNetflixOriginals}
+      <SliderInline rowTitle={"Trending Now"} url={requests.fetchTrending} />
+      <SliderInline rowTitle={"TV Shows"} url={requests.fetchPopularTV} />
+      <SliderInline
+        rowTitle={"Action Movies"}
+        url={requests.fetchActionMovies}
       />
+      <PosterSlider rowTitle={"Top Rated"} url={requests.fetchTopRated} />
+      <SliderInline
+        rowTitle={"Comedy Movies"}
+        url={requests.fetchComedyMovies}
+      ></SliderInline>
 
+      {/* <Slider rowTitle={"Netflix Orignals"} url={requests.fetchNetflixOriginals} />
       <Slider rowTitle={"Top Rated"} url={requests.fetchTopRated} />
       <Slider rowTitle={"Action Movies"} url={requests.fetchActionMovies} />
       <Slider rowTitle={"Comedy Movies"} url={requests.fetchComedyMovies} />
-      <PosterSlider rowTitle={"Top Rated"} url={requests.fetchTopRated} />
+      
       <Slider rowTitle={"Horror Movies"} url={requests.fetchHorrorMovies} />
-      <Slider rowTitle={"Documantaries"} url={requests.fetchDocumantaries} />
+      <Slider rowTitle={"Documantaries"} url={requests.fetchDocumantaries} /> */}
 
       {/* <SliderLoader /> */}
     </>

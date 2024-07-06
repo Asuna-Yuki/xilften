@@ -97,8 +97,9 @@ export const Slider = ({ url, rowTitle }) => {
           <div className='row-title'>
             <h1>
               <a>{rowTitle}</a>
+              <h2>Explore All</h2>
             </h1>
-            <h2>Explore All</h2>
+
             <div className='progress-bar-container'>
               {!loader ? (
                 Array.from({ length: progress }, (_, index) => (
@@ -120,7 +121,7 @@ export const Slider = ({ url, rowTitle }) => {
               </div>
             </button>
             <div
-              className={`slider`}
+              className='slider'
               style={{ transform: `translateX(${transform}%)` }}
             >
               {movies.map((movie) =>
@@ -131,6 +132,7 @@ export const Slider = ({ url, rowTitle }) => {
                     name={movie.original_title}
                   >
                     <img
+                      loading='lazy'
                       className='backdrop-card-img'
                       src={`${IMAGE_URL}${movie.backdrop_path}`}
                       alt=''
@@ -143,6 +145,7 @@ export const Slider = ({ url, rowTitle }) => {
                     name={movie.original_title}
                   >
                     <img
+                      loading='lazy'
                       className='backdrop-card-img'
                       src={defautlBackdrop}
                       alt=''

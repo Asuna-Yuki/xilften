@@ -13,7 +13,7 @@
   --card-per-screen: 6;
   --white: #fff;
   --black: #000;
-  --grey: #808080;
+  --grey: #b3b3b3;
   --backdrop: #141414;
   --primary-text-color: #e5e5e5;
 }
@@ -21,6 +21,10 @@
 body {
   background-color: var(--backdrop);
   overflow-x: hidden;
+}
+body,
+html {
+  touch-action: pan-y;
 }
 
 a {
@@ -106,6 +110,10 @@ nav {
   justify-self: center;
 }
 
+.navlink-1 li a:hover {
+  color: var(--grey);
+}
+
 .nav-img-container {
   height: 32px;
   width: 32px;
@@ -124,6 +132,14 @@ nav {
   height: 5rem;
 } */
 
+.carousel-items {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
 .carousel {
   position: relative;
   /* height: 840px; */
@@ -131,7 +147,7 @@ nav {
 }
 
 .carousel-info {
-  position: absolute;
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -164,7 +180,7 @@ nav {
   z-index: -1;
 }
 .carousel-slider {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
 }
 .carousel-slider .row-container {
@@ -174,7 +190,8 @@ nav {
 
 .row-container {
   /* padding: 0 4%; */
-  margin-block: 46px;
+  /* margin-block: 46px; */
+  margin-block: 3%;
 }
 
 .row-title {
@@ -219,7 +236,7 @@ h2 {
   cursor: pointer;
 }
 
-.row-container h2:hover {
+h1:hover h2 {
   margin-left: 10px;
   opacity: 1;
 }
@@ -227,10 +244,26 @@ h2 {
 .slider-container {
   position: relative;
   padding: 0 4%;
+  /* background-color: green; */
 }
+
+.snaps-inline {
+  overflow-y: hidden;
+  overflow-x: visible;
+  overflow-x: auto;
+  scroll-snap-type: inline mandatory;
+}
+
+.snaps-inline > .snap {
+  scroll-snap-align: start;
+}
+
+.snaps-inline::-webkit-scrollbar {
+  display: none;
+}
+
 .slider {
   display: flex;
-  /* height: 127px; */
   transform: translateX(00%);
   transition: all 0.5s ease-in-out;
 }
@@ -244,7 +277,7 @@ h2 {
   display: inline-block;
   /* max-width: 16.6666666667%; */
   flex: 0 0 calc(100% / var(--card-per-screen));
-  height: 100%;
+  /* height: 100%; */
   padding: 0 3px;
   border-radius: 5px;
 }
@@ -300,7 +333,7 @@ h2 {
 .btn-carousel {
   font-size: 1.6rem;
   font-weight: 600;
-  padding: 9px 27px;
+  padding: 0.5em 1.6em;
   border-radius: 5px;
 }
 
@@ -441,9 +474,11 @@ h2 {
 /* footer */
 
 .footer-container {
-  margin-inline: 200px;
-  padding: 0 5%;
-  margin-top: 80px;
+  /* margin-inline: 200px;
+  margin-top: 80px; */
+  padding: 0 4%;
+  max-width: 1000px;
+  margin: 80px auto 0 auto;
 }
 
 .desc-container {
@@ -457,7 +492,7 @@ h2 {
   font-size: 1.3rem;
   color: var(--grey);
   flex: 0 0 25%;
-  margin-bottom: 1.05%;
+  margin-bottom: 1.5%;
 }
 
 .social-links {
@@ -472,6 +507,7 @@ h2 {
 
 .social-links svg {
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .footer-container .copyright {
@@ -482,6 +518,10 @@ h2 {
 @media screen and (max-width: 1300px) {
   :root {
     --card-per-screen: 5;
+  }
+
+  h1 {
+    font-size: 1.8rem;
   }
 }
 
@@ -510,6 +550,12 @@ h2 {
   .netflix-logo {
     height: 3.1rem;
   }
+
+  .nav-img-container {
+    height: 26px;
+    width: 26px;
+    border-radius: 3px;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -518,6 +564,33 @@ h2 {
   }
   .navlink-1 {
     opacity: 0;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .desc-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .desc {
+    font-size: 1.2rem;
+    color: var(--grey);
+    margin-bottom: 15px;
+  }
+
+  .btn-carousel {
+    font-size: 1rem;
+  }
+
+  .btn-carousel:nth-child(2) {
+    flex-shrink: 0;
+  }
+
+  .btn-carousel svg {
+    height: 80%;
   }
 }
 
