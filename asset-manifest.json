@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Asuna-Yuki/netfilx-clone/static/css/main.c78651d7.css",
-    "main.js": "/Asuna-Yuki/netfilx-clone/static/js/main.a0b578a1.js",
-    "static/media/Backdrop.jpg": "/Asuna-Yuki/netfilx-clone/static/media/Backdrop.eefdf8594e334343344f.jpg",
-    "static/media/wp4842721.jpg": "/Asuna-Yuki/netfilx-clone/static/media/wp4842721.9e4fa5d775cdc42f329a.jpg",
-    "static/media/right-arrow.png": "/Asuna-Yuki/netfilx-clone/static/media/right-arrow.157ad5bb4bafd4fbdca6.png",
-    "static/media/left-arrow.png": "/Asuna-Yuki/netfilx-clone/static/media/left-arrow.fb273e324e75f3662c9b.png",
-    "index.html": "/Asuna-Yuki/netfilx-clone/index.html",
-    "main.c78651d7.css.map": "/Asuna-Yuki/netfilx-clone/static/css/main.c78651d7.css.map",
-    "main.a0b578a1.js.map": "/Asuna-Yuki/netfilx-clone/static/js/main.a0b578a1.js.map"
+    "main.css": "/netfilx-clone/static/css/main.c78651d7.css",
+    "main.js": "/netfilx-clone/static/js/main.c5d77f76.js",
+    "static/media/Backdrop.jpg": "/netfilx-clone/static/media/Backdrop.eefdf8594e334343344f.jpg",
+    "static/media/wp4842721.jpg": "/netfilx-clone/static/media/wp4842721.9e4fa5d775cdc42f329a.jpg",
+    "static/media/right-arrow.png": "/netfilx-clone/static/media/right-arrow.157ad5bb4bafd4fbdca6.png",
+    "static/media/left-arrow.png": "/netfilx-clone/static/media/left-arrow.fb273e324e75f3662c9b.png",
+    "index.html": "/netfilx-clone/index.html",
+    "main.c78651d7.css.map": "/netfilx-clone/static/css/main.c78651d7.css.map",
+    "main.c5d77f76.js.map": "/netfilx-clone/static/js/main.c5d77f76.js.map"
   },
   "entrypoints": [
     "static/css/main.c78651d7.css",
-    "static/js/main.a0b578a1.js"
+    "static/js/main.c5d77f76.js"
   ]
 }
